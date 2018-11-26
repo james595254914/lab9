@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 0 RED, 1 BLUE, 2 YELLOW, 3 GREEN, 4 BUZZER, 5 BUTTON
+# 0 RED, 1 BLUE, 2 RED, 3 BLUE, 4 BUZZER, 5 BUTTON
 
 a=0
 read=$(gpio read 5)
@@ -18,7 +18,10 @@ do
 
         if [ "$a" -eq 16 ]
         then
-            a=0
+	gpio write 4 1 
+            sleep 1
+            gpio write 4 0      
+       break
         fi
 
         if [ "$a" -eq 0 ]
